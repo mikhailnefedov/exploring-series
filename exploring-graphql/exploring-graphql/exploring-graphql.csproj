@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphQL" Version="5.3.3" />
-    <PackageReference Include="GraphQL.Server.Core" Version="5.2.2" />
-    <PackageReference Include="GraphQL.Server.Ui.GraphiQL" Version="6.1.1" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="12.12.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
