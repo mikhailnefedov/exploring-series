@@ -1,5 +1,7 @@
 using exploring_graphql.Data;
+using exploring_graphql.DataLoader;
 using exploring_graphql.Operations;
+using exploring_graphql.Types;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +13,10 @@ builder.Services.AddControllers();
 builder.Services
     .AddGraphQLServer()
     .AddQueryType<Query>()
-    .AddMutationType<Mutation>();
+    .AddMutationType<Mutation>()
+    .AddType<SpeakerType>()
+    .AddDataLoader<SpeakerByIdDataLoader>()
+    .AddDataLoader<SessionByIdDataLoader>();
 
 builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=conferences.db"));
