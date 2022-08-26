@@ -1,22 +1,22 @@
-using exploring_graphql.Query;
+using exploring_graphql.Data;
+using exploring_graphql.Operations;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-// builder.Services.AddEndpointsApiExplorer();
-// builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<Query>();
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>();
+
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlite("Data Source=conferences.db"));
 
 var app = builder.Build();
-
-// app.UseSwagger();
-// app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
