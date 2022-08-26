@@ -9,7 +9,7 @@ using exploring_graphql.Data;
 
 namespace exploring_graphql.Migrations
 {
-    [DbContext(typeof(DataContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220826083550_Initial-Migration")]
     partial class InitialMigration
     {

@@ -13,7 +13,7 @@ builder.Services
     .AddQueryType<Query>()
     .AddMutationType<Mutation>();
 
-builder.Services.AddDbContext<DataContext>(options =>
+builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=conferences.db"));
 
 var app = builder.Build();
