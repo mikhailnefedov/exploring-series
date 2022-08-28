@@ -39,7 +39,7 @@ namespace exploring_graphql.Types
         private class SessionResolvers
         {
             public async Task<IEnumerable<Speaker>> GetSpeakersAsync(
-                Session session,
+                [Parent] Session session,
                 [ScopedService] ApplicationDbContext dbContext,
                 SpeakerByIdDataLoader speakerById,
                 CancellationToken cancellationToken)
@@ -69,7 +69,7 @@ namespace exploring_graphql.Types
             }
 
             public async Task<Track?> GetTrackAsync(
-                Session session,
+                [Parent] Session session,
                 TrackByIdDataLoader trackById,
                 CancellationToken cancellationToken)
             {

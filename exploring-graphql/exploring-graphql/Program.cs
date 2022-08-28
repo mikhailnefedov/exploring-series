@@ -1,6 +1,8 @@
 using exploring_graphql.Data;
 using exploring_graphql.DataLoader;
+using exploring_graphql.Sessions;
 using exploring_graphql.Speakers;
+using exploring_graphql.Tracks;
 using exploring_graphql.Types;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,15 +15,20 @@ builder.Services.AddControllers();
 builder.Services
     .AddGraphQLServer()
     .AddQueryType(q => q.Name("Query"))
-        .AddTypeExtension<SpeakerMutations>()
+        .AddTypeExtension<SpeakerQueries>()
+        .AddTypeExtension<SessionQueries>()
+        .AddTypeExtension<TrackQueries>()
     .AddMutationType(m => m.Name("Mutation"))
+        .AddTypeExtension<SessionMutations>()
         .AddTypeExtension<SpeakerMutations>()
+        .AddTypeExtension<TrackMutations>()
     .AddType<SpeakerType>()
     .AddType<AttendeeType>()
     .AddType<SessionType>()
-    .AddGlobalObjectIdentification()
+    .AddType<TrackType>()
     .AddDataLoader<SpeakerByIdDataLoader>()
-    .AddDataLoader<SessionByIdDataLoader>();
+    .AddDataLoader<SessionByIdDataLoader>()
+    .AddGlobalObjectIdentification();
 
 builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=conferences.db"));
