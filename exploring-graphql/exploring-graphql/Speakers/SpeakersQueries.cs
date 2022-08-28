@@ -4,18 +4,19 @@ using exploring_graphql.Extensions;
 using exploring_graphql.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace exploring_graphql.Operations
+namespace exploring_graphql.Speakers
 {
-    public class Query
+    [ExtendObjectType("Query")]
+    public class SpeakerQueries
     {
         [UseApplicationDbContext]
         public Task<List<Speaker>> GetSpeakers([ScopedService] ApplicationDbContext context)
         {
             return context.Speakers.ToListAsync();
-        }     
+        }
 
         public Task<Speaker> GetSpeakerAsync(
-            int id,
+            [ID(nameof(Speaker))] int id,
             SpeakerByIdDataLoader dataLoader,
             CancellationToken cancellationToken)
         {

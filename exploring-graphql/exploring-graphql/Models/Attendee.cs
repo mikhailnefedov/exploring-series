@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace exploring_graphql.Models
+﻿namespace exploring_graphql.Models
 {
     public class Attendee
     {
@@ -10,7 +8,7 @@ namespace exploring_graphql.Models
         public string? UserName { get; set; }
         public string? EmailAddress { get; set; }
 
-        public ICollection<SessionAttendee> SessionAttendees { get; set; } =
+        public ICollection<SessionAttendee> SessionsAttendees { get; set; } =
             new List<SessionAttendee>();
     }
 }

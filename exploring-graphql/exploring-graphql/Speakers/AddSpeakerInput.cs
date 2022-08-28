@@ -1,4 +1,4 @@
-﻿namespace exploring_graphql.Models
+﻿namespace exploring_graphql.Speakers
 {
     public record AddSpeakerInput(
         string Name,

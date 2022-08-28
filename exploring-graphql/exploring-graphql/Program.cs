@@ -1,6 +1,6 @@
 using exploring_graphql.Data;
 using exploring_graphql.DataLoader;
-using exploring_graphql.Operations;
+using exploring_graphql.Speakers;
 using exploring_graphql.Types;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,9 +12,14 @@ builder.Services.AddControllers();
 
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<Query>()
-    .AddMutationType<Mutation>()
+    .AddQueryType(q => q.Name("Query"))
+        .AddTypeExtension<SpeakerMutations>()
+    .AddMutationType(m => m.Name("Mutation"))
+        .AddTypeExtension<SpeakerMutations>()
     .AddType<SpeakerType>()
+    .AddType<AttendeeType>()
+    .AddType<SessionType>()
+    .AddGlobalObjectIdentification()
     .AddDataLoader<SpeakerByIdDataLoader>()
     .AddDataLoader<SessionByIdDataLoader>();
 

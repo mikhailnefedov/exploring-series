@@ -2,15 +2,15 @@
 using exploring_graphql.Extensions;
 using exploring_graphql.Models;
 
-namespace exploring_graphql.Operations
+namespace exploring_graphql.Speakers
 {
-    public class Mutation
+    [ExtendObjectType("Mutation")]
+    public class SpeakerMutations
     {
         [UseApplicationDbContext]
         public async Task<AddSpeakerPayload> AddSpeakerAsync(
             AddSpeakerInput input,
-            [ScopedService] ApplicationDbContext context
-            )
+            [ScopedService] ApplicationDbContext context)
         {
             var speaker = new Speaker
             {
