@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddGraphQLServer()
@@ -35,7 +37,14 @@ builder.Services
 builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=conferences.db"));
 
+builder.Services
+    .AddConferenceClient()
+    .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://localhost:7118/graphql"));
+
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

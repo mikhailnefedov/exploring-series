@@ -8,6 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <GraphQL Remove="Client\GetSessions.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Client\GetSessions.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <GraphQLConfig Include="Client\GetSessions.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="HotChocolate.AspNetCore" Version="12.12.1" />
     <PackageReference Include="HotChocolate.Data" Version="12.12.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
@@ -20,6 +32,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="12.12.1" />
+    <PackageReference Include="StrawberryShake.Transport.Http" Version="12.12.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
