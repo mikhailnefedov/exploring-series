@@ -1,4 +1,6 @@
-﻿namespace exploring_graphql.Models
+﻿using exploring_graphql.Extensions;
+
+namespace exploring_graphql.Models
 {
     public class Speaker
     {
