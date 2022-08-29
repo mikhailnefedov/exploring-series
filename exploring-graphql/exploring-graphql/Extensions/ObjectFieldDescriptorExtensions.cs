@@ -9,8 +9,7 @@ namespace exploring_graphql.Extensions
             where TDbContext : DbContext
         {
             return descriptor.UseScopedService<TDbContext>(
-                create: s => s.GetRequiredService<IDbContextFactory<TDbContext>>().CreateDbContext(),
-                disposeAsync: (s, c) => c.DisposeAsync());
+                create: s => s.GetRequiredService<IDbContextFactory<TDbContext>>().CreateDbContext());
         }
 
         public static IObjectFieldDescriptor UseUpperCase(

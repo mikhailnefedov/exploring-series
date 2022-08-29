@@ -20,6 +20,7 @@ namespace exploring_graphql.Types
                 .Field(t => t.Sessions)
                 .ResolveWith<TrackResolvers>(t => t.GetSessionsAsync(default!, default!, default!, default))
                 .UseDbContext<ApplicationDbContext>()
+                .UsePaging<NonNullType<SessionType>>()
                 .Name("sessions");
 
             descriptor
@@ -30,7 +31,7 @@ namespace exploring_graphql.Types
         private class TrackResolvers
         {
             public async Task<IEnumerable<Session>> GetSessionsAsync(
-                Track track,
+                [Parent] Track track,
                 [ScopedService] ApplicationDbContext dbContext,
                 SessionByIdDataLoader sessionById,
                 CancellationToken cancellationToken)

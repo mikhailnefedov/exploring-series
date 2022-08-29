@@ -28,7 +28,9 @@ builder.Services
     .AddType<TrackType>()
     .AddDataLoader<SpeakerByIdDataLoader>()
     .AddDataLoader<SessionByIdDataLoader>()
-    .AddGlobalObjectIdentification();
+    .AddGlobalObjectIdentification()
+    .AddFiltering()
+    .AddSorting();
 
 builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=conferences.db"));
