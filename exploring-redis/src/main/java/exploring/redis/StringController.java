@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Controller for REST actions for string keys
+ * Controller for REST actions for string data type
  */
 @RestController
-@RequestMapping(name = "Redis", produces = "application/json", path = "/redis")
+@RequestMapping(name = "String", produces = "application/json", path = "/string")
 public class StringController {
 
     private final RedisTemplate<String, Object> template;
