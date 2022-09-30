@@ -1,0 +1,6 @@
+services:
+  redis:
+    container_name: "explore-mongodb"
+    image: "mongo:5.0.13"
+    ports:
+      - "27017:27017"
